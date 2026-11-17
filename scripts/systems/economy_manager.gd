@@ -14,6 +14,10 @@ func _ready() -> void:
 	core_health = core_max_health
 	GameEvents.zombie_killed.connect(_on_zombie_killed)
 	GameEvents.zombie_reached_core.connect(_on_zombie_reached_core)
+	_emit_initial_values.call_deferred()
+
+
+func _emit_initial_values() -> void:
 	GameEvents.edges_changed.emit(edges)
 	GameEvents.core_health_changed.emit(core_health)
 

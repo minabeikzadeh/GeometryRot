@@ -7,6 +7,7 @@ extends Node2D
 @export var columns: int = 16
 @export var rows: int = 9
 @export var path_cells: Array[Vector2i] = []   # filled by the level; towers cannot be placed here
+@export var core_cells: Array[Vector2i] = []   # cells under the Core; also blocked
 
 var occupied: Dictionary = {}   # Vector2i -> Tower
 
@@ -25,7 +26,7 @@ func in_bounds(cell: Vector2i) -> bool:
 
 
 func can_place(cell: Vector2i) -> bool:
-	return in_bounds(cell) and not occupied.has(cell) and not path_cells.has(cell)
+	return in_bounds(cell) and not occupied.has(cell) and not path_cells.has(cell) and not core_cells.has(cell)
 
 
 func occupy(cell: Vector2i, tower: Node2D) -> void:

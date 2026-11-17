@@ -5,8 +5,8 @@
 ```
 Node2D
  └─ Shape (scripts/core/shape.gd)         health, sides, color, draws itself as a polygon
-     ├─ Tower  (scripts/towers/tower.gd)   player-owned, stats from shapes.json
-     └─ Zombie (scripts/zombies/zombie.gd) enemy, follows a Path2D, stats from zombies.json
+	 ├─ Tower  (scripts/towers/tower.gd)   player-owned, stats from shapes.json
+	 └─ Zombie (scripts/zombies/zombie.gd) enemy, follows a Path2D, stats from zombies.json
 ```
 
 ## Scene tree (level.tscn)
@@ -15,6 +15,7 @@ Node2D
 Level            game_manager.gd  (state, placement, merge click flow)
 ├─ Grid          grid_manager.gd  (cells, occupied, path cells)
 ├─ Path2D        zombie route (cell centers; keep in sync with Grid.path_cells)
+├─ Core          core.gd (drawn at screen center; path ends here; Grid.core_cells blocks its 2 cells)
 ├─ Economy       economy_manager.gd (Edges, Core health)
 ├─ Spawner       wave_spawner.gd
 ├─ MergeManager  merge_manager.gd
