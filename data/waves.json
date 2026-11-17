@@ -1,0 +1,7 @@
+[
+	{"groups": [{"zombie": "cracked_square", "count": 5, "interval": 1.6}]},
+	{"groups": [{"zombie": "cracked_square", "count": 5, "interval": 1.4}, {"zombie": "jagged_triangle", "count": 4, "interval": 0.9}]},
+	{"groups": [{"zombie": "melting_circle", "count": 8, "interval": 1.0}]},
+	{"groups": [{"zombie": "hexagon_host", "count": 3, "interval": 2.0}, {"zombie": "jagged_triangle", "count": 6, "interval": 0.7}]},
+	{"groups": [{"zombie": "cracked_square", "count": 6, "interval": 1.2}, {"zombie": "melting_circle", "count": 8, "interval": 0.8}, {"zombie": "hexagon_host", "count": 4, "interval": 1.8}]}
+]

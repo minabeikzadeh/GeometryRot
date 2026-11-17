@@ -1,0 +1,7 @@
+[
+	{"inputs": ["triangle", "triangle"], "result": "diamond"},
+	{"inputs": ["square", "square"],     "result": "rectangle"},
+	{"inputs": ["circle", "circle"],     "result": "oval"},
+	{"inputs": ["pentagon", "pentagon"], "result": "hexagon"},
+	{"inputs": ["triangle", "circle"],   "result": "spike_ball"}
+]
