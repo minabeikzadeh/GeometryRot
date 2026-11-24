@@ -2,6 +2,15 @@
 
 Shape-based tower defense for ECS 179. Place shapes, merge them into stronger forms, and stop the infected shapes ("the Rot") from reaching the Core.
 
+**Engine:** Godot 4.3+ (GDScript), GL Compatibility renderer.
+
+## Run it
+
+1. Install Godot 4.3 or newer (standard build, not .NET).
+2. Open Godot, click **Import**, and select `project.godot`.
+3. Press **F5**. The main scene is `scenes/main_menu.tscn`.
+
+> The skeleton was written without being opened in Godot. Expect to fix a few small errors the first time you run it (see "First 30 minutes" below).
 
 ## Controls (current skeleton)
 

@@ -14,7 +14,7 @@ Node2D
 ```
 Level            game_manager.gd  (state, placement, merge click flow)
 ├─ Grid          grid_manager.gd  (cells, occupied, path cells)
-├─ Path2D        zombie route (cell centers; keep in sync with Grid.path_cells)
+├─ Path2D        zombie route (generated: edit WAYPOINTS in tools/make_path.py)
 ├─ Core          core.gd (drawn at screen center; path ends here; Grid.core_cells blocks its 2 cells)
 ├─ Economy       economy_manager.gd (Edges, Core health)
 ├─ Spawner       wave_spawner.gd
@@ -34,7 +34,13 @@ Level            game_manager.gd  (state, placement, merge click flow)
 
 **Merge:** click tower A, click adjacent tower B → `merge_requested(A, B)` → `MergeManager` checks adjacency and recipe → frees both, spawns result → `merge_completed`.
 
+**Feedback:** `placement_failed`, `merge_failed`, and `merge_completed` show as short messages in the HUD (`hud.gd: show_toast`). Selected towers get a white ring; the hovered cell shows green (can build), red (blocked), or faint white (tower, click to merge).
+
 **Wave:** `Spawner.start_next_wave` → spawns zombies on a timer → zombies killed (`zombie_killed` → Edges) or reach the Core (`zombie_reached_core` → Core health) → `wave_cleared` → next wave, or `level_won` after the last.
+
+## Grid
+
+32 px cells, 40 x 18, placed at (0, 72) on a 1280 x 720 screen. Towers are about one cell wide. The track is 2 cells wide. The Core covers the 4 cells around the screen center.
 
 ## Data files
 
@@ -49,5 +55,4 @@ Level            game_manager.gd  (state, placement, merge click flow)
 
 - Tower specials (splash, pierce, buffs, rolling) and zombie specials (slime, split) are TODOs.
 - Infection system is an empty skeleton.
-- Win/lose scene does not yet know which result happened.
-- The Path2D curve and `Grid.path_cells` are separate; if you edit one, edit the other.
+- Do not hand-edit the path in the Godot editor. Edit `WAYPOINTS` in `tools/make_path.py` and run it; it updates the Path2D curve and `Grid.path_cells` together.
