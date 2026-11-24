@@ -1,7 +1,7 @@
 class_name Shape
 extends Node2D
 ## Base class for everything that is a shape (towers and zombies).
-## Draws itself as a regular polygon with a neon outline, so no sprite art is required.
+## Draws itself as a regular polygon with a neon outline, so no sprite art is needed.
 
 signal died(shape: Shape)
 
@@ -35,7 +35,7 @@ func _draw() -> void:
 	for i in sides:
 		var a := TAU * float(i) / float(sides) - PI / 2.0
 		pts.append(Vector2(cos(a), sin(a)) * radius)
-	# Fill gets darker as health drops, so damage reads at a glance.
+	# Fill gets darker as health drops.
 	var health_frac: float = clampf(health / max_health, 0.0, 1.0)
 	var fill := shape_color.darkened(0.7)
 	fill.a = lerpf(0.25, 0.8, health_frac)
