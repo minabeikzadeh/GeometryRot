@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _on_health_changed(value: int) -> void:
-	max_health = maxi(max_health, value)   # first value we hear is the full health
+	max_health = maxi(max_health, value)  # first value we hear is the full health
 	health = value
 
 
@@ -40,7 +40,15 @@ func _draw() -> void:
 	# Soft glow rings
 	for i in 3:
 		var a := 0.14 - 0.04 * float(i)
-		draw_arc(Vector2.ZERO, radius * pulse + 8.0 + 6.0 * float(i), 0.0, TAU, 48, Color(col.r, col.g, col.b, a), 4.0)
+		draw_arc(
+			Vector2.ZERO,
+			radius * pulse + 8.0 + 6.0 * float(i),
+			0.0,
+			TAU,
+			48,
+			Color(col.r, col.g, col.b, a),
+			4.0
+		)
 
 	# Health ring: full circle = full health
 	var ring_r := radius + 14.0

@@ -44,7 +44,7 @@ func _on_zombie_killed(_zombie: Node2D, reward: int) -> void:
 
 
 func _on_zombie_reached_core(_zombie: Node2D) -> void:
-	core_health -= 1   # TODO: scale by zombie size
+	core_health -= 1  # TODO: scale by zombie size
 	GameEvents.core_health_changed.emit(core_health)
 	if core_health <= 0:
 		GameEvents.level_lost.emit()

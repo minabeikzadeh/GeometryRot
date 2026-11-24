@@ -1,7 +1,8 @@
 class_name Zombie
 extends Shape
 ## Infected shape. Follows a Path2D toward the Core.
-## Looks like a decayed version of its shape: dented edges, spikes or drips, cracks, wobble, glitch flicker.
+## Looks like a decayed version of its shape: dented edges, spikes or drips,
+## cracks, wobble, and glitch flicker.
 ## OWNER: Member 2.
 
 const CRACK_GLOW := Color("#a6ff3a")
@@ -9,8 +10,8 @@ const GLITCH_COLOR := Color("#ff3bd4")
 
 var zombie_id: String = ""
 var stats: Dictionary = {}
-var path_follow: PathFollow2D = null   # set by WaveSpawner when spawned
-var speed_multiplier: float = 1.0      # slowed by Oval, slime, etc.
+var path_follow: PathFollow2D = null  # set by WaveSpawner when spawned
+var speed_multiplier: float = 1.0  # slowed by Oval, slime, etc.
 
 # Visual deformation (random per zombie, so no two look the same)
 var _vert_scale := PackedFloat32Array()
@@ -29,6 +30,7 @@ func _ready() -> void:
 func setup(id: String) -> void:
 	zombie_id = id
 	stats = GameData.zombies[id]
+	radius = 12.0
 	sides = stats["sides"]
 	shape_color = Color(stats["color"])
 	max_health = stats["health"]
@@ -57,7 +59,7 @@ func _build_deformation() -> void:
 				s = rng.randf_range(0.8, 1.05)
 				var a := TAU * float(i) / float(n) - PI / 2.0
 				if sin(a) > 0.3:
-					s *= rng.randf_range(1.15, 1.55)   # drips hang off the bottom
+					s *= rng.randf_range(1.15, 1.55)  # drips hang off the bottom
 			_:
 				# cracked square, hexagon host: lumpy and dented
 				s = rng.randf_range(0.85, 1.15) if corner else rng.randf_range(0.55, 0.95)
@@ -106,7 +108,9 @@ func _draw() -> void:
 	for idx in _crack_idx:
 		var tip: Vector2 = pts[idx]
 		draw_line(tip * 0.15, tip * 0.85, Color(0, 0, 0, 0.8), 2.0)
-		draw_line(tip * 0.15 + Vector2(1, 1), tip * 0.85 + Vector2(1, 1), Color(CRACK_GLOW, 0.6), 1.0)
+		draw_line(
+			tip * 0.15 + Vector2(1, 1), tip * 0.85 + Vector2(1, 1), Color(CRACK_GLOW, 0.6), 1.0
+		)
 
 	# Occasional glitch flicker: offset magenta copy of the outline
 	if _glitch > 0.0:
