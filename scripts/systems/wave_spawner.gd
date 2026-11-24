@@ -19,7 +19,7 @@ func _ready() -> void:
 func start_next_wave() -> void:
 	current_wave += 1
 	if current_wave >= GameData.waves.size():
-		return   # GameManager decides when the level is won
+		return  # GameManager decides when the level is won
 	GameEvents.wave_started.emit(current_wave)
 	_run_wave(GameData.waves[current_wave])
 
@@ -31,6 +31,10 @@ func _run_wave(wave: Dictionary) -> void:
 			spawn_zombie(group["zombie"])
 			await get_tree().create_timer(float(group["interval"])).timeout
 	_spawning = false
+	# Every zombie may already be dead by the time spawning ends; the kill handler
+	# ignored it while _spawning was true, so check once here.
+	if alive_in_wave <= 0:
+		GameEvents.wave_cleared.emit(current_wave)
 
 
 func spawn_zombie(zombie_id: String) -> Zombie:
