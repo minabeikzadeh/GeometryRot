@@ -2,10 +2,11 @@ extends Node
 ## Loads all JSON data in res://data at startup (autoload: GameData).
 ## Balance changes happen in the JSON files, not in code.
 
-var shapes: Dictionary = {}    # id -> stats for towers (base and merged)
-var merges: Array = []         # list of recipes
-var zombies: Dictionary = {}   # id -> stats for zombies
-var waves: Array = []          # list of wave definitions
+var shapes: Dictionary = {}  # id -> stats for towers (base and merged)
+var merges: Array = []  # list of recipes
+var zombies: Dictionary = {}  # id -> stats for zombies
+var waves: Array = []  # list of wave definitions
+var last_result: String = ""  # "won" or "lost"; read by the win/lose screen
 
 
 func _ready() -> void:

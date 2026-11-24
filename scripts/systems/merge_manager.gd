@@ -1,7 +1,7 @@
 class_name MergeManager
 extends Node
 ## Finds valid merges and replaces two towers with the result. OWNER: Member 1.
-## Recipes live in data/merges.json (looked up through GameData.find_merge_result).
+## Recipes live in data/merges.json
 
 @export var grid: GridManager
 @export var tower_scene: PackedScene
@@ -27,11 +27,16 @@ func _are_adjacent(a: Tower, b: Tower) -> bool:
 func _on_merge_requested(a: Node2D, b: Node2D) -> void:
 	var ta := a as Tower
 	var tb := b as Tower
-	if not can_merge(ta, tb):
-		GameEvents.merge_failed.emit("These shapes cannot merge.")
+	if ta == null or tb == null or not is_instance_valid(ta) or not is_instance_valid(tb):
+		return
+	if not _are_adjacent(ta, tb):
+		GameEvents.merge_failed.emit("Shapes must be side by side to merge")
+		return
+	if GameData.find_merge_result(ta.shape_id, tb.shape_id) == "":
+		GameEvents.merge_failed.emit("%s + %s has no recipe" % [ta.stats["name"], tb.stats["name"]])
 		return
 	var result_id := GameData.find_merge_result(ta.shape_id, tb.shape_id)
-	var target_cell := tb.cell                      # result takes the cell of the second tower
+	var target_cell := tb.cell  # result takes the cell of the second tower
 	var combined_health_frac := (ta.health / ta.max_health + tb.health / tb.max_health) / 2.0
 
 	grid.free_cell(ta.cell)
@@ -45,6 +50,7 @@ func _on_merge_requested(a: Node2D, b: Node2D) -> void:
 	merged.health = merged.max_health * combined_health_frac
 	grid.add_child(merged)
 	merged.global_position = grid.cell_to_world(target_cell)
+	merged.pop()
 	grid.occupy(target_cell, merged)
 	GameEvents.merge_completed.emit(merged)
 	# TODO (Member 1): merge VFX hook, support-buff recalculation for neighbors.
