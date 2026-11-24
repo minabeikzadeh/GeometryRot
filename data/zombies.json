@@ -1,6 +1,6 @@
 {
-	"cracked_square":  {"name": "Cracked Square",  "sides": 4,  "health": 160, "speed": 40.0,  "contact_damage": 10.0, "reward": 12, "infect_time": 4.0, "color": "#8a7a3a", "special": ""},
-	"melting_circle":  {"name": "Melting Circle",  "sides": 24, "health": 50,  "speed": 95.0,  "contact_damage": 5.0,  "reward": 8,  "infect_time": 3.0, "color": "#4a9a4a", "special": "slime_trail"},
-	"jagged_triangle": {"name": "Jagged Triangle", "sides": 3,  "health": 35,  "speed": 130.0, "contact_damage": 8.0,  "reward": 7,  "infect_time": 2.5, "color": "#9a4a5a", "special": "ignore_slow"},
-	"hexagon_host":    {"name": "Hexagon Host",    "sides": 6,  "health": 90,  "speed": 60.0,  "contact_damage": 8.0,  "reward": 15, "infect_time": 3.5, "color": "#7a4a9a", "special": "split_on_death", "split_into": "jagged_triangle", "split_count": 2}
+	"cracked_square":  {"name": "Cracked Square",  "sides": 4,  "health": 160, "speed": 70.0,  "contact_damage": 10.0, "reward": 12, "infect_time": 4.0, "color": "#8a7a3a", "special": ""},
+	"melting_circle":  {"name": "Melting Circle",  "sides": 24, "health": 50,  "speed": 115.0,  "contact_damage": 5.0,  "reward": 8,  "infect_time": 3.0, "color": "#4a9a4a", "special": "slime_trail"},
+	"jagged_triangle": {"name": "Jagged Triangle", "sides": 3,  "health": 35,  "speed": 165.0, "contact_damage": 8.0,  "reward": 7,  "infect_time": 2.5, "color": "#9a4a5a", "special": "ignore_slow"},
+	"hexagon_host":    {"name": "Hexagon Host",    "sides": 6,  "health": 90,  "speed": 85.0,  "contact_damage": 8.0,  "reward": 15, "infect_time": 3.5, "color": "#7a4a9a", "special": "split_on_death", "split_into": "jagged_triangle", "split_count": 2}
 }

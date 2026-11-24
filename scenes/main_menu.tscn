@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://wamrq87ln6d3"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_s"]
+[ext_resource type="Script" uid="uid://b43iuygb0k3lk" path="res://scripts/ui/main_menu.gd" id="1_s"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=265673572]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1160907293]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,16 +26,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="VBox"]
+[node name="Title" type="Label" parent="VBox" unique_id=2099769516]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Geometry Rot"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBox"]
+[node name="PlayButton" type="Button" parent="VBox" unique_id=1095375075]
 layout_mode = 2
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="VBox"]
+[node name="QuitButton" type="Button" parent="VBox" unique_id=1631641630]
 layout_mode = 2
 text = "Quit"
